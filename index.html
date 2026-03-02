@@ -559,73 +559,81 @@
 
     <script src="script.js"></script>
     <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getFirestore, collection, addDoc, onSnapshot } 
-  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } 
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "PASTE_YOURS",
-    authDomain: "PASTE_YOURS",
-    projectId: "PASTE_YOURS",
-    storageBucket: "PASTE_YOURS",
-    messagingSenderId: "PASTE_YOURS",
-    appId: "PASTE_YOURS"
-  };
+// 🔥 YOUR REAL CONFIG HERE
+const firebaseConfig = {
+  apiKey: "YOUR_REAL_KEY",
+  authDomain: "ai-humanizer-reviews.firebaseapp.com",
+  projectId: "ai-humanizer-reviews",
+  storageBucket: "ai-humanizer-reviews.firebasestorage.app",
+  messagingSenderId: "526546164659",
+  appId: "1:526546164659:web:ab0767bf6ff9e5c0e849c6"
+};
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-  const submitBtn = document.getElementById("submitReview");
-  const nameInput = document.getElementById("reviewName");
-  const textInput = document.getElementById("reviewText");
-  const reviewsGrid = document.getElementById("reviewsGrid");
+const submitBtn = document.getElementById("submitReview");
+const nameInput = document.getElementById("reviewName");
+const textInput = document.getElementById("reviewText");
+const reviewsGrid = document.getElementById("reviewsGrid");
 
-  // Add Review
-  submitBtn.addEventListener("click", async () => {
-    const name = nameInput.value.trim();
-    const text = textInput.value.trim();
+// ⭐ Submit Review
+submitBtn.addEventListener("click", async () => {
+  const name = nameInput.value.trim();
+  const text = textInput.value.trim();
 
-    if (!name || !text) {
-      alert("Please fill all fields");
-      return;
-    }
+  if (!name || !text) {
+    alert("Please fill all fields");
+    return;
+  }
 
+  try {
     await addDoc(collection(db, "reviews"), {
-      name: name,
-      text: text,
-      rating: 5, // you can improve later
+      name,
+      text,
+      rating: 5,
       created: new Date()
     });
 
     nameInput.value = "";
     textInput.value = "";
-  });
+  } catch (error) {
+    console.error("Error adding review:", error);
+  }
+});
 
-  // Show Reviews in Real Time
-  onSnapshot(collection(db, "reviews"), (snapshot) => {
-    snapshot.docChanges().forEach((change) => {
-      if (change.type === "added") {
-        const data = change.doc.data();
+// ⭐ Real-time listener (NO duplicates)
+const q = query(collection(db, "reviews"), orderBy("created", "desc"));
 
-        reviewsGrid.innerHTML += `
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">"${data.text}"</p>
-            <div class="review-author">
-              <div class="review-avatar">${data.name.charAt(0)}</div>
-              <div>
-                <strong>${data.name}</strong>
-                <span>Verified Client</span>
-              </div>
-            </div>
+onSnapshot(q, (snapshot) => {
+  reviewsGrid.innerHTML = ""; // CLEAR FIRST
+
+  snapshot.forEach((doc) => {
+    const data = doc.data();
+
+    reviewsGrid.innerHTML += `
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"${data.text}"</p>
+        <div class="review-author">
+          <div class="review-avatar">${data.name.charAt(0)}</div>
+          <div>
+            <strong>${data.name}</strong>
+            <span>Verified Client</span>
           </div>
-        `;
-      }
-    });
+        </div>
+      </div>
+    `;
   });
+});
 </script>
 </body>
 
 
 </html>
+
 
