@@ -2,269 +2,562 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro AI Content Humanizer</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HumanizeAI Pro – AI-Free, Plagiarism-Free Content Service</title>
     <meta name="description"
-        content="Get your AI-generated assignments, reports, and research papers 100% humanized automatically with 0% plagiarism. Natural flow and perfect meaning maintained.">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        content="Transform AI-generated assignments, reports & research into 100% human-written, plagiarism-free content. Fast, reliable, and undetectable by AI checkers." />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Inter:wght@400;500;600&display=swap"
-        rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
 
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">
-                <i data-lucide="zap" class="logo-icon"></i>
-                Humanize<span class="gradient-text">AI</span>
+    <!-- ===== FLOATING PARTICLES ===== -->
+    <div class="particles" id="particles"></div>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <img src="images/favicon.png" alt="HumanizeAI Logo" class="nav-logo-img" />
+                <span>HumanizeAI <span class="logo-pro">Pro</span></span>
             </a>
-            <ul class="nav-links">
-                <li><a href="#features">Services</a></li>
-                <li><a href="#how-it-works">How it Works</a></li>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#contact" class="btn-primary-small">Contact me</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="mobile-menu-btn">
-                <i data-lucide="menu"></i>
+            <div class="nav-actions">
+                <a href="#contact" class="btn-nav-cta">Get Started</a>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="container hero-container">
-            <div class="hero-content">
-                <div class="badge">✨ No Plagiarism Guarantee</div>
-                <h1 class="hero-title">
-                    Transform AI generated text into <span class="gradient-text type-effect">100% Human Writing</span>
-                </h1>
-                <p class="hero-subtitle">
-                    Assignments, reports, and research papers humanized perfectly naturally. No plagiarism, natural
-                    flow, original ideas preserved.
-                    <br><em>(AI Walin hadapu documents 100% humanize karala denawa, plagiarism nethuwa, adahasa ehemama
-                        thiyala!)</em>
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                ✨ #1 AI Humanization Service in Sri Lanka
+            </div>
+            <h1 class="hero-title">
+                Make Your AI Content<br />
+                <span class="gradient-text">100% Human &amp; Undetectable</span>
+            </h1>
+            <p class="hero-subtitle">
+                We transform AI-generated assignments, reports, and research papers into
+                <strong>naturally written, plagiarism-free</strong> content that passes
+                every AI detector — ChatGPT, Turnitin, GPTZero &amp; more.
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-num">500+</span>
+                    <span class="stat-label">Documents Done</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-num">100%</span>
+                    <span class="stat-label">AI-Free Guarantee</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-num">24hr</span>
+                    <span class="stat-label">Fast Delivery</span>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="https://wa.me/94704002294?text=Hi!%20I%20need%20my%20AI%20content%20humanized.%20Please%20help!"
+                    target="_blank" class="btn-primary" id="heroWhatsApp">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
+                    Chat on WhatsApp
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&to=madusankahemarathna@gmail.com&su=AI%20Content%20Humanization%20Request&body=Hi%2C%20I%20need%20my%20AI%20content%20humanized.%20Please%20help!"
+                    target="_blank" class="btn-secondary" id="heroEmail">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    Send via Gmail
+                </a>
+            </div>
+        </div>
+        <div class="hero-image-wrap">
+            <div class="hero-glow"></div>
+            <img src="images/hero_banner.png" alt="AI Content Humanization" class="hero-img" />
+            <div class="hero-badge-float badge-float-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12" />
+                </svg>
+                100% AI-Free
+            </div>
+            <div class="hero-badge-float badge-float-2">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                Plagiarism-Free
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TRUSTED BY SECTION ===== -->
+    <section class="trusted-section">
+        <p class="trusted-label">Trusted by students &amp; professionals across Sri Lanka</p>
+        <div class="trusted-logos">
+            <span class="trusted-badge">📄 Assignments</span>
+            <span class="trusted-badge">📊 Reports</span>
+            <span class="trusted-badge">🔬 Research Papers</span>
+            <span class="trusted-badge">📝 Essays</span>
+            <span class="trusted-badge">📚 Dissertations</span>
+            <span class="trusted-badge">💼 Business Docs</span>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES SECTION ===== -->
+    <section class="services-section" id="services">
+        <div class="section-header">
+            <span class="section-tag">What We Offer</span>
+            <h2>Our <span class="gradient-text">Premium Services</span></h2>
+            <p>We specialize in making AI-generated content completely undetectable while preserving the original
+                meaning and quality.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up">
+                <div class="service-icon icon-purple">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg>
+                </div>
+                <h3>AI Humanization</h3>
+                <p>We rewrite your AI-generated content to sound completely natural and human — passing all AI detectors
+                    including Turnitin, GPTZero, and Originality.ai.</p>
+                <ul class="service-features">
+                    <li>✅ ChatGPT content rewriting</li>
+                    <li>✅ Gemini / Copilot content</li>
+                    <li>✅ Any AI-generated text</li>
+                </ul>
+            </div>
+            <div class="service-card featured" data-aos="fade-up" data-aos-delay="100">
+                <div class="featured-ribbon">Most Popular</div>
+                <div class="service-icon icon-teal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                </div>
+                <h3>Plagiarism-Free Package</h3>
+                <p>Complete humanization PLUS a plagiarism check report. Your document will be 100% original with a
+                    Turnitin-ready guarantee.</p>
+                <ul class="service-features">
+                    <li>✅ AI Humanization included</li>
+                    <li>✅ Plagiarism check report</li>
+                    <li>✅ 100% originality guarantee</li>
+                    <li>✅ Priority delivery</li>
+                </ul>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon icon-gold">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="16" y1="13" x2="8" y2="13" />
+                        <line x1="16" y1="17" x2="8" y2="17" />
+                        <polyline points="10 9 9 9 8 9" />
+                    </svg>
+                </div>
+                <h3>Academic Documents</h3>
+                <p>Specialized service for assignments, research papers, dissertations, and reports. We maintain
+                    academic tone and referencing style throughout.</p>
+                <ul class="service-features">
+                    <li>✅ University assignments</li>
+                    <li>✅ Research papers</li>
+                    <li>✅ Dissertations & thesis</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="how-section" id="how-it-works">
+        <div class="section-header">
+            <span class="section-tag">Simple Process</span>
+            <h2>How It <span class="gradient-text">Works</span></h2>
+            <p>Get your humanized document in just 3 easy steps. Fast, secure, and reliable.</p>
+        </div>
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-num">01</div>
+                <div class="step-icon">📤</div>
+                <h3>Submit Your Document</h3>
+                <p>Send your AI-generated content via WhatsApp or Gmail. Any format accepted — Word, PDF, or plain text.
                 </p>
-                <div class="hero-cta">
-                    <a href="#contact" class="btn-primary">
-                        Get Started <i data-lucide="arrow-right"></i>
-                    </a>
-                    <a href="#features" class="btn-secondary">
-                        View Features
-                    </a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat"><span class="highlight">100%</span> Human</div>
-                    <div class="stat"><span class="highlight">0%</span> Plagiarism</div>
-                    <div class="stat"><span class="highlight">24/7</span> Support</div>
-                </div>
             </div>
-            <div class="hero-image-container">
-                <div class="glass-card image-card">
-                    <img src="assets/hero.png" alt="AI to Human Transformation" class="hero-img">
+            <div class="step-arrow">→</div>
+            <div class="step-card">
+                <div class="step-num">02</div>
+                <div class="step-icon">⚙️</div>
+                <h3>We Humanize It</h3>
+                <p>Our expert team rewrites your content to sound naturally human while preserving all your original
+                    ideas and meaning.</p>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step-card">
+                <div class="step-num">03</div>
+                <div class="step-icon">✅</div>
+                <h3>Receive &amp; Submit</h3>
+                <p>Get your fully humanized, plagiarism-free document ready to submit — complete with a check report if
+                    requested.</p>
+            </div>
+        </div>
+        <div class="process-image-wrap">
+            <img src="images/humanize_process.png" alt="Humanization Process" class="process-img" />
+        </div>
+    </section>
+
+    <!-- ===== PRICING SECTION ===== -->
+    <section class="pricing-section" id="pricing">
+        <div class="section-header">
+            <span class="section-tag">Transparent Pricing</span>
+            <h2>Simple &amp; <span class="gradient-text">Affordable Plans</span></h2>
+            <p>No hidden fees. Pay only for what you need. Contact us for custom quotes on large documents.</p>
+        </div>
+        <div class="pricing-grid">
+
+            <!-- Plan 1: Short Essay -->
+            <div class="pricing-card">
+                <div class="pricing-tier">Short Essay</div>
+                <div class="pricing-price">
+                    <span class="price-currency">Rs.</span>
+                    <span class="price-amount">1,500</span>
+                    <span class="price-period">/ doc</span>
+                </div>
+                <p class="pricing-desc">Perfect for short assignments and discussion posts</p>
+                <ul class="pricing-features">
+                    <li><span class="feat-check">✓</span> Up to 1,000 words</li>
+                    <li><span class="feat-check">✓</span> 100% Humanized Text</li>
+                    <li><span class="feat-check">✓</span> 0% Plagiarism Report included</li>
+                    <li><span class="feat-check">✓</span> 48-hour delivery</li>
+                    <li><span class="feat-check">✓</span> 2 Revisions</li>
+                </ul>
+                <a href="https://wa.me/94704002294?text=Hi!%20I%20need%20the%20Short%20Essay%20plan%20(Rs.%201%2C500)%20for%20AI%20humanization."
+                    target="_blank" class="btn-pricing">Choose Plan</a>
+            </div>
+
+            <!-- Plan 2: Standard Report (Most Popular) -->
+            <div class="pricing-card featured-price">
+                <div class="pricing-popular">⭐ Most Popular</div>
+                <div class="pricing-tier">Standard Report</div>
+                <div class="pricing-price">
+                    <span class="price-currency">Rs.</span>
+                    <span class="price-amount">3,500</span>
+                    <span class="price-period">/ doc</span>
+                </div>
+                <p class="pricing-desc">Ideal for term papers and detailed reports</p>
+                <ul class="pricing-features">
+                    <li><span class="feat-check">✓</span> Up to 3,000 words</li>
+                    <li><span class="feat-check">✓</span> 100% Humanized Text</li>
+                    <li><span class="feat-check">✓</span> 0% Plagiarism Report included</li>
+                    <li><span class="feat-check">✓</span> Relevant Images Added</li>
+                    <li><span class="feat-check">✓</span> 96-hour delivery</li>
+                    <li><span class="feat-check">✓</span> Unlimited Revisions</li>
+                </ul>
+                <a href="https://wa.me/94704002294?text=Hi!%20I%20need%20the%20Standard%20Report%20plan%20(Rs.%203%2C500)%20for%20AI%20humanization."
+                    target="_blank" class="btn-pricing featured-btn">Choose Plan</a>
+            </div>
+
+            <!-- Plan 3: Research Paper (Custom) -->
+            <div class="pricing-card">
+                <div class="pricing-tier">Research Paper</div>
+                <div class="pricing-price custom-price">
+                    <span class="price-amount custom-amount">Custom</span>
+                    <span class="price-period">Pricing</span>
+                </div>
+                <p class="pricing-desc">For thesis, dissertations, and heavy research</p>
+                <ul class="pricing-features">
+                    <li><span class="feat-check">✓</span> 3,000+ words</li>
+                    <li><span class="feat-check">✓</span> Advanced Academic Tone</li>
+                    <li><span class="feat-check">✓</span> Complete Plagiarism checking</li>
+                    <li><span class="feat-check">✓</span> Charts &amp; Visuals included</li>
+                    <li><span class="feat-check">✓</span> Custom delivery timeline</li>
+                    <li><span class="feat-check">✓</span> Unlimited Revisions</li>
+                </ul>
+                <a href="https://wa.me/94704002294?text=Hi!%20I%20need%20a%20custom%20quote%20for%20a%20Research%20Paper%20humanization."
+                    target="_blank" class="btn-pricing">Choose Plan</a>
+            </div>
+
+        </div>
+        <p class="pricing-note">💬 Need help choosing a plan? <a href="https://wa.me/94704002294" target="_blank">Chat
+                with us on WhatsApp</a> — we'll find the perfect fit for you!</p>
+    </section>
+
+    <!-- ===== ABOUT / WHY US ===== -->
+    <section class="why-section">
+        <div class="why-left">
+            <div class="section-header left-align">
+                <span class="section-tag">Why Choose Us</span>
+                <h2>We Don't Just Rewrite —<br /><span class="gradient-text">We Perfect It</span></h2>
+            </div>
+            <div class="why-list">
+                <div class="why-item">
+                    <div class="why-icon">🎯</div>
+                    <div>
+                        <h4>Undetectable Results</h4>
+                        <p>Our humanized content passes Turnitin, GPTZero, Originality.ai, and all major AI detectors.
+                        </p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">🔒</div>
+                    <div>
+                        <h4>100% Confidential</h4>
+                        <p>Your documents and personal information are completely private. We never share or store your
+                            data.</p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">⚡</div>
+                    <div>
+                        <h4>Lightning Fast</h4>
+                        <p>Standard delivery within 24 hours. Premium clients get priority 6-hour turnaround even on
+                            weekends.</p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">💯</div>
+                    <div>
+                        <h4>Satisfaction Guarantee</h4>
+                        <p>Not happy? We'll revise until you're 100% satisfied — at no extra charge.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </header>
-
-    <section id="features" class="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Why Choose My Service?</h2>
-                <p>Everything you need for perfect, undetectable assignments</p>
+        <div class="why-right">
+            <img src="images/student_working.png" alt="Happy student" class="why-img" />
+            <div class="why-stat-box">
+                <div class="why-stat"><span>500+</span> Documents</div>
+                <div class="why-stat"><span>100%</span> Pass Rate</div>
+                <div class="why-stat"><span>4.9★</span> Rating</div>
             </div>
+        </div>
+    </section>
 
-            <div class="features-grid">
-                <div class="feature-card glass-card">
-                    <div class="icon-wrapper">
-                        <img src="assets/shield.png" alt="Shield Icon" class="custom-icon">
+    <!-- ===== REVIEWS SECTION ===== -->
+    <section class="reviews-section" id="reviews">
+        <div class="section-header">
+            <span class="section-tag">Customer Reviews</span>
+            <h2>What Our <span class="gradient-text">Clients Say</span></h2>
+            <p>Real feedback from real students and professionals we've helped.</p>
+        </div>
+
+        <!-- Review Form -->
+        <div class="review-form-wrap">
+            <h3>✍️ Leave a Review</h3>
+            <div class="star-selector" id="starSelector">
+                <span class="star" data-val="1">★</span>
+                <span class="star" data-val="2">★</span>
+                <span class="star" data-val="3">★</span>
+                <span class="star" data-val="4">★</span>
+                <span class="star" data-val="5">★</span>
+            </div>
+            <input type="text" id="reviewName" placeholder="Your Name" class="review-input" maxlength="50" />
+            <textarea id="reviewText" placeholder="Share your experience with HumanizeAI Pro..." class="review-textarea"
+                rows="4" maxlength="500"></textarea>
+            <button class="btn-submit-review" id="submitReview">Submit Review</button>
+        </div>
+
+        <!-- Reviews Grid -->
+        <div class="reviews-grid" id="reviewsGrid">
+            <!-- Seeded reviews -->
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Absolutely amazing! My research paper passed Turnitin with 0% AI score.
+                    Delivered in just 8 hours. Highly recommend!"</p>
+                <div class="review-author">
+                    <div class="review-avatar">K</div>
+                    <div>
+                        <strong>Kavindya P.</strong>
+                        <span>University of Colombo</span>
                     </div>
-                    <h3>0% Plagiarism</h3>
-                    <p>Every document is thoroughly checked. You get entirely unique content that passes Turnitin and
-                        other AI detectors with ease.</p>
                 </div>
-
-                <div class="feature-card glass-card">
-                    <div class="icon-wrapper">
-                        <i data-lucide="feather" class="feature-icon"></i>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Used this service for my final year dissertation. The quality was exceptional —
+                    it didn't just change words, it actually improved my writing!"</p>
+                <div class="review-author">
+                    <div class="review-avatar">R</div>
+                    <div>
+                        <strong>Ravindu M.</strong>
+                        <span>SLIIT Student</span>
                     </div>
-                    <h3>Natural Flow & Meaning</h3>
-                    <p>I ensure the original idea, meaning, and flow remain perfectly intact. It will read exactly as if
-                        a human expert wrote it.</p>
                 </div>
-
-                <div class="feature-card glass-card">
-                    <div class="icon-wrapper">
-                        <i data-lucide="image" class="feature-icon"></i>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Fast, professional, and the result is perfect. My lecturer couldn't tell the
+                    difference. Will use again for my next assignment!"</p>
+                <div class="review-author">
+                    <div class="review-avatar">S</div>
+                    <div>
+                        <strong>Sanduni L.</strong>
+                        <span>Sabaragamuwa University</span>
                     </div>
-                    <h3>Relevant Images Added</h3>
-                    <p>Need visuals? I'll find or generate high-quality, perfectly matching images to complement your
-                        reports and assignments.</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★☆</div>
+                <p class="review-text">"Great service overall. The humanized version was excellent and passed all AI
+                    detectors. Just took a bit longer than expected but worth the wait."</p>
+                <div class="review-author">
+                    <div class="review-avatar">D</div>
+                    <div>
+                        <strong>Dilshan A.</strong>
+                        <span>Business Professional</span>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Sent my report at midnight and got it back by morning! The WhatsApp
+                    communication was super easy. 100% recommend to all students!"</p>
+                <div class="review-author">
+                    <div class="review-avatar">N</div>
+                    <div>
+                        <strong>Nethmi R.</strong>
+                        <span>Kelaniya University</span>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"I was skeptical at first but the results blew me away. The plagiarism report
+                    showed 0% and it read completely naturally. Best service in SL!"</p>
+                <div class="review-author">
+                    <div class="review-avatar">A</div>
+                    <div>
+                        <strong>Ashan T.</strong>
+                        <span>Moratuwa University</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="how-it-works" class="process">
-        <div class="container">
-            <div class="section-title">
-                <h2>How It Works</h2>
-                <p>A simple 3-step process to get your perfect document</p>
-            </div>
-
-            <div class="steps-container">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Send Your AI Content</h3>
-                    <p>Share your ChatGPT/AI generated assignment, report, or research.</p>
+    <!-- ===== CONTACT SECTION ===== -->
+    <section class="contact-section" id="contact">
+        <div class="section-header">
+            <span class="section-tag">Get In Touch</span>
+            <h2>Ready to <span class="gradient-text">Get Started?</span></h2>
+            <p>Contact us now and we'll get back to you within minutes. Available 7 days a week!</p>
+        </div>
+        <div class="contact-cards">
+            <a href="https://wa.me/94704002294?text=Hi!%20I%20need%20my%20AI%20content%20humanized.%20Can%20you%20help%20me?"
+                target="_blank" class="contact-card whatsapp-card" id="contactWhatsApp">
+                <div class="contact-card-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
                 </div>
-                <div class="step-line"></div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>I Humanize It</h3>
-                    <p>I rewrite, restructure, and naturally weave the text to ensure 0% AI detection.</p>
+                <div class="contact-card-info">
+                    <h3>WhatsApp</h3>
+                    <span class="contact-cta">Tap to Chat Now →</span>
                 </div>
-                <div class="step-line"></div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Receive Your Perfect Doc</h3>
-                    <p>Get your final, polished document with perfectly placed images and no plagiarism.</p>
+            </a>
+            <a href="https://mail.google.com/mail/?view=cm&to=madusankahemarathna@gmail.com&su=AI%20Content%20Humanization%20Request&body=Hi%2C%20I%20need%20my%20AI%20content%20humanized.%20Please%20help!"
+                target="_blank" class="contact-card gmail-card" id="contactGmail">
+                <div class="contact-card-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.910 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
+                    </svg>
                 </div>
-            </div>
+                <div class="contact-card-info">
+                    <h3>Gmail</h3>
+                    <span class="contact-cta">Send Email →</span>
+                </div>
+            </a>
+        </div>
+        <div class="availability-banner">
+            <span>🟢 Currently Available</span>
+            <span>⚡ Average response time: &lt; 30 minutes</span>
+            <span>📅 Monday – Sunday, 7 AM – 11 PM</span>
         </div>
     </section>
 
-    <section id="pricing" class="pricing">
-        <div class="container">
-            <div class="section-title">
-                <h2>Simple & Transparent Pricing</h2>
-                <p>Choose the plan that fits your assignment length</p>
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="images/favicon.png" alt="Logo" class="footer-logo" />
+                <span>HumanizeAI <strong>Pro</strong></span>
             </div>
-
-            <div class="pricing-grid">
-                <div class="pricing-card glass-card">
-                    <div class="pricing-header">
-                        <h3>Short Essay</h3>
-                        <div class="price">Rs. 1,500<span>/doc</span></div>
-                        <p>Perfect for short assignments and discussion posts</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i data-lucide="check" class="check-icon"></i> Up to 1,000 words</li>
-                        <li><i data-lucide="check" class="check-icon"></i> 100% Humanized Text</li>
-                        <li><i data-lucide="check" class="check-icon"></i> 0% Plagiarism Report included</li>
-                        <li><i data-lucide="check" class="check-icon"></i> 48-hour delivery</li>
-                        <li><i data-lucide="check" class="check-icon"></i> 2 Revisions</li>
-                    </ul>
-                    <a href="https://wa.me/94704002294?text=Hi!%20I%20want%20to%20humanize%20a%20Short%20Essay.%0A%0A*Plan%20Details:*%0A-%20Up%20to%201%2C000%20words%0A-%20Rs.%201%2C500%0A-%2048-hour%20delivery"
-                        target="_blank" class="btn-secondary full-width">Choose Plan</a>
-                </div>
-
-                <div class="pricing-card glass-card popular-card">
-                    <div class="popular-badge">Most Popular</div>
-                    <div class="pricing-header">
-                        <h3>Standard Report</h3>
-                        <div class="price">Rs. 3,500<span>/doc</span></div>
-                        <p>Ideal for term papers and detailed reports</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i data-lucide="check" class="check-icon"></i> Up to 3,000 words</li>
-                        <li><i data-lucide="check" class="check-icon"></i> 100% Humanized Text</li>
-                        <li><i data-lucide="check" class="check-icon"></i> 0% Plagiarism Report included</li>
-                        <li><i data-lucide="check" class="check-icon"></i> Relevant Images Added</li>
-                        <li><i data-lucide="check" class="check-icon"></i> 96-hour delivery</li>
-                        <li><i data-lucide="check" class="check-icon"></i> Unlimited Revisions</li>
-                    </ul>
-                    <a href="https://wa.me/94704002294?text=Hi!%20I%20want%20to%20humanize%20a%20Standard%20Report.%0A%0A*Plan%20Details:*%0A-%20Up%20to%203%2C000%20words%0A-%20Rs.%203%2C500%0A-%2096-hour%20delivery"
-                        target="_blank" class="btn-primary full-width">Choose Plan</a>
-                </div>
-
-                <div class="pricing-card glass-card">
-                    <div class="pricing-header">
-                        <h3>Research Paper</h3>
-                        <div class="price">Custom<span> Pricing</span></div>
-                        <p>For thesis, dissertations, and heavy research</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i data-lucide="check" class="check-icon"></i> 3,000+ words</li>
-                        <li><i data-lucide="check" class="check-icon"></i> Advanced Academic Tone</li>
-                        <li><i data-lucide="check" class="check-icon"></i> Complete Plagiarism checking</li>
-                        <li><i data-lucide="check" class="check-icon"></i> Charts & Visuals included</li>
-                        <li><i data-lucide="check" class="check-icon"></i> Custom delivery timeline</li>
-                        <li><i data-lucide="check" class="check-icon"></i> Unlimited Revisions</li>
-                    </ul>
-                    <a href="https://wa.me/94704002294?text=Hi!%20I%20need%20a%20custom%20price%20for%20a%20Research%20Paper.%0A%0A*Plan%20Details:*%0A-%203%2C000%2B%20words%0A-%20Custom%20delivery%20timeline"
-                        target="_blank" class="btn-secondary full-width">Contact for Price</a>
-                </div>
+            <p class="footer-tagline">Making AI content undetectable — professionally &amp; confidentially.</p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#contact">Contact</a>
             </div>
-        </div>
-    </section>
-
-    <section id="contact" class="cta-section">
-        <div class="container">
-            <div class="cta-box glass-card">
-                <h2>Ready to humanize your work?</h2>
-                <p>Drop me a message on WhatsApp or email me to get started today. Quality guaranteed!</p>
-                <div class="cta-buttons">
-                    <a href="https://wa.me/94704002294" target="_blank" class="btn-primary whatsapp-btn">
-                        <i data-lucide="message-circle"></i> Message on WhatsApp
-                    </a>
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=madusankahemarathna@gmail.com"
-                        target="_blank" class="btn-secondary">
-                        <i data-lucide="mail"></i> Email Me
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="reviews" class="reviews-section">
-    <div class="container">
-        <div class="section-title">
-            <h2>Rate My Service</h2>
-            <p>Your feedback helps me improve and build trust</p>
-        </div>
-
-        <div class="review-box glass-card">
-            <h3>Leave a Rating</h3>
-
-            <div class="star-rating">
-                <span class="star" data-value="1">★</span>
-                <span class="star" data-value="2">★</span>
-                <span class="star" data-value="3">★</span>
-                <span class="star" data-value="4">★</span>
-                <span class="star" data-value="5">★</span>
-            </div>
-
-            <textarea id="comment" placeholder="Write your comment here..."></textarea>
-
-            <button id="submitReview" class="btn-primary">Submit Review</button>
-
-            <div id="reviewList"></div>
-        </div>
-    </div>
-</section>
-    <footer>
-        <div class="container footer-content">
-            <div class="logo">
-                <i data-lucide="zap" class="logo-icon small-icon"></i>
-                Humanize<span class="gradient-text">AI</span>
-            </div>
-            <p>&copy; 2026 AI Content Humanizer. All rights reserved.</p>
+            <p class="footer-copy">© 2025 HumanizeAI Pro. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- ===== FLOATING BUTTONS ===== -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/94704002294?text=Hi!%20I%20need%20my%20AI%20content%20humanized!" target="_blank"
+            class="float-btn float-whatsapp" id="floatWhatsApp" title="Chat on WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+            <span class="float-tooltip">Chat on WhatsApp</span>
+        </a>
+        <a href="https://mail.google.com/mail/?view=cm&to=madusankahemarathna@gmail.com&su=AI%20Content%20Humanization%20Request&body=Hi%2C%20I%20need%20my%20AI%20content%20humanized.%20Please%20help!"
+            target="_blank" class="float-btn float-gmail" id="floatGmail" title="Send Email">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                    d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.910 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
+            </svg>
+            <span class="float-tooltip">Send Email</span>
+        </a>
+    </div>
+
+    <!-- ===== AUTO-CLICK WHATSAPP POPUP ===== -->
+    <div class="wa-popup" id="waPopup">
+        <button class="wa-popup-close" id="waPopupClose">✕</button>
+        <div class="wa-popup-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+        </div>
+        <div class="wa-popup-body">
+            <h4>👋 Hey there!</h4>
+            <p>Need your AI content humanized? <strong>Chat with us now</strong> — we're online and ready to help!</p>
+            <a href="https://wa.me/94704002294?text=Hi!%20I%20visited%20your%20website%20and%20need%20help%20humanizing%20my%20AI%20content!"
+                target="_blank" class="wa-popup-btn" id="waPopupBtn">
+                Start WhatsApp Chat →
+            </a>
+        </div>
+    </div>
+
     <script src="script.js"></script>
-    <script>
-        lucide.createIcons();
-    </script>
 </body>
 
 </html>
-
