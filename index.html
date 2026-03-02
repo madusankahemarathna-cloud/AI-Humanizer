@@ -560,7 +560,8 @@
     <script src="script.js"></script>
     <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getFirestore, collection, addDoc, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  import { getFirestore, collection, addDoc, onSnapshot } 
+  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "PASTE_YOURS",
@@ -574,36 +575,52 @@
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  const reviewForm = document.getElementById("reviewForm");
-  const reviewsContainer = document.getElementById("reviewsContainer");
+  const submitBtn = document.getElementById("submitReview");
+  const nameInput = document.getElementById("reviewName");
+  const textInput = document.getElementById("reviewText");
+  const reviewsGrid = document.getElementById("reviewsGrid");
 
-  // Add review
-  reviewForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  // Add Review
+  submitBtn.addEventListener("click", async () => {
+    const name = nameInput.value.trim();
+    const text = textInput.value.trim();
 
-    const name = document.getElementById("name").value;
-    const message = document.getElementById("message").value;
+    if (!name || !text) {
+      alert("Please fill all fields");
+      return;
+    }
 
     await addDoc(collection(db, "reviews"), {
       name: name,
-      message: message,
+      text: text,
+      rating: 5, // you can improve later
       created: new Date()
     });
 
-    reviewForm.reset();
+    nameInput.value = "";
+    textInput.value = "";
   });
 
-  // Real-time display reviews
+  // Show Reviews in Real Time
   onSnapshot(collection(db, "reviews"), (snapshot) => {
-    reviewsContainer.innerHTML = "";
-    snapshot.forEach((doc) => {
-      const data = doc.data();
-      reviewsContainer.innerHTML += `
-        <div class="review">
-          <h4>${data.name}</h4>
-          <p>${data.message}</p>
-        </div>
-      `;
+    snapshot.docChanges().forEach((change) => {
+      if (change.type === "added") {
+        const data = change.doc.data();
+
+        reviewsGrid.innerHTML += `
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"${data.text}"</p>
+            <div class="review-author">
+              <div class="review-avatar">${data.name.charAt(0)}</div>
+              <div>
+                <strong>${data.name}</strong>
+                <span>Verified Client</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }
     });
   });
 </script>
@@ -611,3 +628,4 @@
 
 
 </html>
+
