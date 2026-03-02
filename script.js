@@ -82,3 +82,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+let selectedRating = 0;
+
+const stars = document.querySelectorAll(".star");
+const reviewList = document.getElementById("reviewList");
+
+stars.forEach(star => {
+    star.addEventListener("click", () => {
+        selectedRating = star.getAttribute("data-value");
+        stars.forEach(s => s.classList.remove("active"));
+        for (let i = 0; i < selectedRating; i++) {
+            stars[i].classList.add("active");
+        }
+    });
+});
+
+document.getElementById("submitReview").addEventListener("click", () => {
+    const comment = document.getElementById("comment").value;
+
+    if (selectedRating === 0 || comment === "") {
+        alert("Please select rating and write a comment.");
+        return;
+    }
+
+    const reviewItem = document.createElement("div");
+    reviewItem.innerHTML = `
+        <p><strong>Rating:</strong> ${selectedRating} ★</p>
+        <p>${comment}</p>
+        <hr>
+    `;
+
+    reviewList.prepend(reviewItem);
+
+    document.getElementById("comment").value = "";
+    stars.forEach(s => s.classList.remove("active"));
+    selectedRating = 0;
+});
